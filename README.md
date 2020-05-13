@@ -4,8 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## How to run
 
-ng server will run `http://localhost:4200/`
-npm start will will only work after running `npm build` only as. npm start script is changed to run application on node. so that can deploy to heroku. locally running npm start will run on `http://localhost:8080/`
+-> ng server will run `http://localhost:4200/`
+-> npm start will will only work after running `npm build` only as. npm start script is changed to run application on node. so that can deploy to heroku. locally running npm start will run on `http://localhost:8080/`
+
+## Code Deployed at
+
+`http://kireeti-games-arena.herokuapp.com/`
+Note: only http version will work not https as api endpoint is not at https;
 
 ## Development server
 

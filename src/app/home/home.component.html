@@ -1,0 +1,76 @@
+<div class="heading">
+  <h2>Games Arena</h2>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    class="spinner"
+    color="primary"
+    mode="indeterminate"
+    diameter="30"
+  >
+  </mat-progress-spinner>
+</div>
+<div class="content">
+  <div class="searchContainer">
+    <div class="search" [class.seachFoucs]="isFocus">
+      <mat-icon matPrefix>search</mat-icon>
+      <form>
+        <input
+          type="text"
+          matInput
+          placeholder="Search (by name) "
+          class="searchInput"
+          (focus)="toggleFocus(true)"
+          (focusout)="toggleFocus(false)"
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option.title"
+          >
+            {{ option.title }}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+      <mat-icon
+        *ngIf="myControl.value.length > 0"
+        class="clear"
+        (click)="clearSearch()"
+        matSuffix
+        >clear</mat-icon
+      >
+    </div>
+    <div class="filter">
+      <mat-icon (click)="homeService.sortGames()" title="Sort"
+        >swap_vert</mat-icon
+      >
+      <mat-form-field>
+        <mat-label>Group by platform</mat-label>
+        <mat-select (selectionChange)="platformChange($event)">
+          <mat-option [value]="null">--None--</mat-option>
+          <mat-option
+            *ngFor="let platform of homeService.platforms"
+            [value]="platform"
+          >
+            {{ platform }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngFor="let game of games" class="game">
+    <app-game-card [game]="game"></app-game-card>
+  </div>
+  <div class="pagination" *ngIf="games && games.length !== 0">
+    <span
+      *ngFor="let item of numberOfPages"
+      [class.currentPage]="homeService.currentPage == item"
+    >
+      <a [routerLink]="['/home']" [queryParams]="{ page: item }">
+        {{ item }}
+      </a>
+    </span>
+  </div>
+  <h3 *ngIf="games && games.length === 0" class="text-center">No Data</h3>
+</div>

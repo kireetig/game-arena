@@ -1,0 +1,27 @@
+<mat-card class="p-0">
+  <mat-card-content>
+    <div class="container">
+      <div class="image">
+        <img
+          src="https://www.gravatar.com/avatar/05b6d7cc7c662bf81e01b39254f88a49?d=identicon"
+          alt=""
+        />
+      </div>
+      <div class="name">
+        <h2>
+          {{ game.title }}
+          <span *ngIf="game.editors_choice === 'Y'">
+            <mat-icon>star</mat-icon>
+          </span>
+        </h2>
+        <p>{{ game.platform }}</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>Genre: {{ game.genre }}</div>
+      <div>
+        {{ game.score }}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

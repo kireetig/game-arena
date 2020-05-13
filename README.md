@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
+## How to run
+
+ng server will run `http://localhost:4200/`
+npm start will will only work after running `npm build` only as. npm start script is changed to run application on node. so that can deploy to heroku. locally running npm start will run on `http://localhost:8080/`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

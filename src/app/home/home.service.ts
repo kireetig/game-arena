@@ -21,6 +21,7 @@ export class HomeService {
   currentPage = 1;
   isAsc = false;
   platforms = [];
+  isLoading = true;
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +38,7 @@ export class HomeService {
         this.allGames = this.games;
         this.updateGames();
         this.setPlatforms();
+        this.isLoading = false;
       });
   }
 

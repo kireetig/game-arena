@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   games;
   isFocus = false;
   numberOfPages = [];
-  isLoading = true;
 
   myControl = new FormControl('');
 
@@ -36,9 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.homeService.currentPageGames.subscribe((res) => {
       this.games = res;
       this.numberOfPages = this.homeService.getPages();
-    }, err => console.error(err),
-    () =>  this.isLoading = false
-    );
+    });
 
     // auto complete
     this.filteredOptions = this.myControl.valueChanges.pipe(
